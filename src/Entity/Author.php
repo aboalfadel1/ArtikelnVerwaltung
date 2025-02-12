@@ -24,8 +24,7 @@ class Author
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\Column]
-    private ?bool $following = null;
+   
 
     /**
      * @var Collection<int, Article>
@@ -76,14 +75,5 @@ class Author
         return $this;
     }
 
-    public function isFollowing(): ?bool
-    {
-        return $this->following;
-    }
-
-    public function setFollowing(bool $following): static
-    {
-        $this->following = $following;
-        return $this;
-    }
+   
 }

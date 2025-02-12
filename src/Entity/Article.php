@@ -48,6 +48,7 @@ class Article
      * @var Collection<int, Tag>
      */
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'articles')]
+    #[ORM\JoinTable(name: 'article_tags')]
     private Collection $tags;
 
     public function __construct()
@@ -166,6 +167,11 @@ class Article
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
+        return $this;
+    }
+    public function clearTags(): static
+    {
+        $this->tags->clear();
         return $this;
     }
 
